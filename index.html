@@ -28,8 +28,8 @@
             font-size: 18px;
         }
 
-        #locationInput {
-            width: 70%;
+        input {
+            width: 100%;
             padding: 10px;
             margin-bottom: 20px;
             font-size: 16px;
@@ -59,15 +59,40 @@
             border-radius: 8px;
             margin-top: 20px;
         }
+
+        #zoomControls {
+            margin-top: 10px;
+        }
+
+        .zoomBtn {
+            padding: 10px;
+            margin-right: 10px;
+            cursor: pointer;
+            background-color: #4285f4;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .zoomBtn:hover {
+            background-color: #357ae8;
+        }
     </style>
 </head>
 
 <body onload="updateMapOnLoad()">
 
     <div id="mapContainer">
-        <label for="locationInput">Enter Location:</label>
-        <input type="text" id="locationInput" placeholder="Enter a location" value="Dinajpur Pulhat Jame Masjid">
+        <label for="locationInput">Enter Location or Coordinates (latitude, longitude):</label>
+        <input type="text" id="locationInput" placeholder="e.g., Dinajpur Pulhat Jame Masjid or 25.6234, 88.6258">
         <button id="showMapBtn" onclick="updateMap()">Show on Map</button>
+
+        <div id="zoomControls">
+            <button class="zoomBtn" onclick="zoomIn()">Zoom In (+)</button>
+            <button class="zoomBtn" onclick="zoomOut()">Zoom Out (-)</button>
+        </div>
     </div>
 
     <div class="elementor-custom-embed">
@@ -79,7 +104,7 @@
             // Get the user input
             var location = document.getElementById('locationInput').value;
 
-            // Construct the Google Maps URL with the location
+            // Construct the Google Maps URL based on user input
             var mapsUrl = 'https://maps.google.com/maps?q=' + encodeURIComponent(location) + '&t=m&z=10&output=embed&iwloc=near';
 
             // Update the iframe source
@@ -89,6 +114,28 @@
         function updateMapOnLoad() {
             // Load the default location on page load
             updateMap();
+        }
+
+        function zoomIn() {
+            // Zoom In by increasing the zoom level
+            var currentUrl = document.getElementById('mapFrame').src;
+            var zoomLevelIndex = currentUrl.indexOf('&z=');
+            if (zoomLevelIndex !== -1) {
+                var currentZoom = parseInt(currentUrl.substr(zoomLevelIndex + 3, 2));
+                var newZoom = Math.min(currentZoom + 1, 20);
+                document.getElementById('mapFrame').src = currentUrl.replace('&z=' + currentZoom, '&z=' + newZoom);
+            }
+        }
+
+        function zoomOut() {
+            // Zoom Out by decreasing the zoom level
+            var currentUrl = document.getElementById('mapFrame').src;
+            var zoomLevelIndex = currentUrl.indexOf('&z=');
+            if (zoomLevelIndex !== -1) {
+                var currentZoom = parseInt(currentUrl.substr(zoomLevelIndex + 3, 2));
+                var newZoom = Math.max(currentZoom - 1, 1);
+                document.getElementById('mapFrame').src = currentUrl.replace('&z=' + currentZoom, '&z=' + newZoom);
+            }
         }
     </script>
 
