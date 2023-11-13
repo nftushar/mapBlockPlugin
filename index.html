@@ -1,47 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Dynamic Map</title>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Map</title>
     <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        #mapContainer {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        #locationInput {
+            width: 70%;
+            padding: 10px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        #showMapBtn {
+            padding: 12px 20px;
+            cursor: pointer;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        #showMapBtn:hover {
+            background-color: #45a049;
+        }
+
         #mapFrame {
             width: 100%;
             height: 400px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-top: 20px;
         }
     </style>
+</head>
 
-    <body>
+<body onload="updateMapOnLoad()">
 
+    <div id="mapContainer">
+        <label for="locationInput">Enter Location:</label>
+        <input type="text" id="locationInput" placeholder="Enter a location" value="Dinajpur Pulhat Jame Masjid">
+        <button id="showMapBtn" onclick="updateMap()">Show on Map</button>
+    </div>
 
+    <div class="elementor-custom-embed">
+        <iframe id="mapFrame" loading="lazy" title="Dynamic Map"></iframe>
+    </div>
 
-        
+    <script>
+        function updateMap() {
+            // Get the user input
+            var location = document.getElementById('locationInput').value;
 
-        <div>
-            <label for="locationInput">Enter Location:</label>
-            <input type="text" id="locationInput" placeholder="Enter a location">
-            <button onclick="updateMap()">Show on Map</button>
-        </div>
+            // Construct the Google Maps URL with the location
+            var mapsUrl = 'https://maps.google.com/maps?q=' + encodeURIComponent(location) + '&t=m&z=10&output=embed&iwloc=near';
 
-        <div class="elementor-custom-embed">
-            <iframe id="mapFrame" loading="lazy" title="Dynamic Map"></iframe>
-        </div>
+            // Update the iframe source
+            document.getElementById('mapFrame').src = mapsUrl;
+        }
 
-        <script>
-            function updateMap() {
-                // Get the user input
-                var location = document.getElementById('locationInput').value;
+        function updateMapOnLoad() {
+            // Load the default location on page load
+            updateMap();
+        }
+    </script>
 
-                // Construct the Google Maps URL with the location
-                var mapsUrl = 'https://maps.google.com/maps?q=' + encodeURIComponent(location) + '&t=m&z=10&output=embed&iwloc=near';
-
-                // Update the iframe source
-                document.getElementById('mapFrame').src = mapsUrl;
-            }
-        </script>
-
-    </body>
+</body>
 
 </html>
