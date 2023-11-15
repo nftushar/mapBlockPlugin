@@ -96,7 +96,7 @@
     </div>
 
     <div class="elementor-custom-embed">
-        <iframe id="mapFrame" loading="lazy" title="Dynamic Map"></iframe>
+        <iframe id="mapFrame" loading="lazy" title="Default Location"></iframe>
     </div>
 
     <script>
@@ -113,7 +113,9 @@
 
         function updateMapOnLoad() {
             // Load the default location on page load
-            updateMap();
+            var defaultLocation = 'Dinajpur Pulhat Jame Masjid';
+            var defaultMapsUrl = 'https://maps.google.com/maps?q=' + encodeURIComponent(defaultLocation) + '&t=m&z=10&output=embed&iwloc=near';
+            document.getElementById('mapFrame').src = defaultMapsUrl;
         }
 
         function zoomIn() {
