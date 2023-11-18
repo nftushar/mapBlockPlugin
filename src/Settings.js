@@ -19,8 +19,8 @@ const iconAlignments = [
 
 
 const Settings = ({ attributes, setAttributes }) => {
-	const {background, filters, mapLocation, apiKey, zoom } = attributes;
-	
+	const { background, filters, mapLocation, apiKey, zoom, height } = attributes;
+
 	// console.log(filters.blur);
 
 
@@ -42,6 +42,14 @@ const Settings = ({ attributes, setAttributes }) => {
 								className="bPlPanelBody"
 								title={__("Settings", "map-block")}
 							>
+								<UnitControl
+									className="mt20"
+									label={__("Height", "info-cards")}
+									labelPosition="left"
+									value={height}
+									onChange={(val) => setAttributes({ height: val })}
+								/>
+
 								<Background
 									label={__('Background', 'map-block')}
 									value={background}
@@ -120,7 +128,7 @@ const Settings = ({ attributes, setAttributes }) => {
 									min={0}
 									max={20}
 									step={1}
-								/> 
+								/>
 
 								{/* <BtnGroup
 									className="mt20"

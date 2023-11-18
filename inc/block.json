@@ -42,7 +42,7 @@
         "brightness": 100,
         "contrast": 100,
         "saturate": 100,
-        "hue": 0
+        "hue": 1
       }
     },
     "height": {
