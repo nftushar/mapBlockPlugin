@@ -1,0 +1,60 @@
+Features for Google Maps block
+   Without API:
+     Maps Location: Address, latitude and longitude
+     CSS Filters, Hover
+   ( Advanced ):
+   ( Happy Addons Features ):
+   Floating Effect:
+       Enable,
+       Translate
+       Rotate,
+       Scale,
+   CSS Transform:
+       Enable/Disable,
+       Translate,
+       Rotate,
+       Scale,
+       Skew,
+       Display Condition Enable/Disable,
+       To --- Show/Hide
+       When -- All Condition Met/Any Condition Met
+       TimeZone -- Server TimeZone/Local TimeZone
+       Conditions:
+    ( Essential Addons ):
+    Wrapper Link:
+       Enable/Disable Wrapper Link,
+    Advanced Tooltip:
+       Enable/Disable,
+    Content Protection:
+       Enable/Disable,
+       Protection Type: User role,
+       Select Roles,
+       Message Type --  none/Message/Saved-Template,
+       Incorrect Password- Message Password does not match.
+    Conditional Display:
+       Enable/Disable Conditional Display,
+       Visibility Action -  Show/Hide/Hide-Without-Condition,
+       Action Applicable if - true all logic/true any logic,
+       Logics:
+            User Status - Duplicate,
+            Type,
+            User Status,
+            Login Status,
+            Logged In,
+            Not Logged In,
+            Select User Type,
+    ( Default ):
+    Motion Effects:
+       Scrolling Effects - on/off
+       Mouse Effects     - on/off
+       Sticky            - None/Top/Bottom
+    Entrance Animation pc/tab/phone:
+       Default/Fade-in/Fade-in-down etc
+    Transform:
+       Rotate/offset/Scale      
+    Background,
+    Border,
+    Mask,
+    Responsive,
+    Attributes,
+    Custom CSS,
