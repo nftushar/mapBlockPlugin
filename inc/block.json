@@ -1,0 +1,83 @@
+{
+  "apiVersion": "1",
+  "name": "b-blocks/map-block",
+  "title": "map-block",
+  "description": "Easy-to-use, responsive map-block  more.",
+  "category": "widgets",
+  "keywords": [
+    "map-block",
+    "map",
+    "Gutenberg"
+  ],
+  "textdomain": "map-block",
+  "attributes": {
+    "align": {
+      "type": "string",
+      "default": ""
+    },
+    "cId": {
+      "type": "string",
+      "default": ""
+    },
+    "iconStyle": {
+      "type": "string",
+      "default": "solid"
+    },
+    "mapLocation": {
+      "type": "string",
+      "default": "Dhaka, Bangladesh   "
+    },
+    "zoom": {
+      "type": "number",
+      "default": 10
+    },
+    "height": {
+      "type": "string",
+      "default": "500px"
+    },
+    "prefix": {
+      "type": "string",
+      "default": ""
+    },
+    "alignment": {
+      "type": "string",
+      "default": "center"
+    },
+    "textColor": {
+      "type": "string",
+      "default": "#7a7a7a"
+    },
+    "typography": {
+      "type": "object",
+      "default": {
+        "fontSize": "16px"
+      }
+    },
+    "textShadow": {
+      "type": "array",
+      "default": []
+    },
+    "gap": {
+      "type": "string",
+      "default": "10px"
+    }
+  },
+  "supports": {
+    "align": [
+      "wide",
+      "full"
+    ],
+    "html": false
+  },
+  "example": {
+    "attributes": {
+      "preview": true,
+      "columns": {
+        "desktop": 1,
+        "tablet": 1,
+        "mobile": 1
+      }
+    }
+  },
+  "editorScript": "file:../dist/editor.js"
+}
