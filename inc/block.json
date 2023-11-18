@@ -25,11 +25,25 @@
     },
     "mapLocation": {
       "type": "string",
-      "default": "Dhaka, Bangladesh   "
+      "default": "Dhaka"
     },
     "zoom": {
       "type": "number",
       "default": 10
+    },
+    "background": {
+      "type": "string",
+      "default": "#7a7a7a"
+    },
+    "filters": {
+      "type": "object",
+      "default": {
+        "blur": 0,
+        "brightness": 100,
+        "contrast": 100,
+        "saturate": 100,
+        "hue": 0
+      }
     },
     "height": {
       "type": "string",

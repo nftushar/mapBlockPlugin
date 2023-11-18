@@ -19,10 +19,12 @@ const iconAlignments = [
 
 
 const Settings = ({ attributes, setAttributes }) => {
-	const { zoom, height, iconStyle, prefix, alignment, background, mapLocation, apiKey } = attributes;
+	const {background, filters, mapLocation, apiKey, zoom } = attributes;
+	
+	// console.log(filters.blur);
 
-	// Set the default API key as a string
-	const defaultApiKey = 'AIzaSyB_tu1jOcD7QlpzevDAPXbl7Xv9JciLW0w';
+
+
 
 	return (
 		<InspectorControls>
@@ -47,6 +49,55 @@ const Settings = ({ attributes, setAttributes }) => {
 									defaults={{ color: '#000' }}
 								/>
 
+
+								<PanelBody
+									className="bPlPanelBody"
+									title={__("Filters", "map-block")}
+								>
+									<RangeControl
+										label={__("Blur", "map-block")}
+										value={filters.blur}
+										onChange={(val) => setAttributes({ filters: { ...filters, blur: val } })}
+										min={0}
+										max={10}
+										step={0.1}
+									/>
+									<RangeControl
+										label={__("Brightness", "map-block")}
+										value={filters.brightness}
+										onChange={(val) => setAttributes({ filters: { ...filters, brightness: val } })}
+										min={0}
+										max={200}
+										step={1}
+									/>
+									<RangeControl
+										label={__("Contrast", "map-block")}
+										value={filters.contrast}
+										onChange={(val) => setAttributes({ filters: { ...filters, contrast: val } })}
+										min={0}
+										max={200}
+										step={1}
+									/>
+									<RangeControl
+										label={__("Saturate", "map-block")}
+										value={filters.saturate}
+										onChange={(val) => setAttributes({ filters: { ...filters, saturate: val } })}
+										min={0}
+										max={200}
+										step={1}
+									/>
+									<RangeControl
+										label={__("Hue", "map-block")}
+										value={filters.hue}
+										onChange={(val) => setAttributes({ filters: { ...filters, hue: val } })}
+										min={0}
+										max={360}
+										step={1}
+									/>
+								</PanelBody>
+
+
+
 								<TextControl
 									className="mt20"
 									label={__("Location", "map-block")}
@@ -57,7 +108,7 @@ const Settings = ({ attributes, setAttributes }) => {
 								<TextControl
 									className="mt20"
 									label={__("API Key", "map-block")}
-									value={apiKey || defaultApiKey}  // Use default API key if not provided
+									value={apiKey}  // Use default API key if not provided
 									onChange={(val) => setAttributes({ apiKey: val })}
 								/>
 								<RangeControl
@@ -69,28 +120,21 @@ const Settings = ({ attributes, setAttributes }) => {
 									min={0}
 									max={20}
 									step={1}
-								/>
-								<UnitControl
-									className="mt20"
-									label={__("Height", "info-cards")}
-									labelPosition="left"
-									value={height}
-									onChange={(val) => setAttributes({ height: val })}
-								/>
+								/> 
 
-								<BtnGroup
+								{/* <BtnGroup
 									className="mt20"
 									label={__("Icon Style", "map-block")}
 									value={iconStyle}
 									onChange={val => setAttributes({ iconStyle: val })}
-									options={iconOptions} isIcon={true} />
+									options={iconOptions} isIcon={true} /> */}
 
-								<BtnGroup
+								{/* <BtnGroup
 									className="mt20"
 									label={__("Alignment", "map-block")}
 									value={alignment}
 									onChange={val => setAttributes({ alignment: val })}
-									options={iconAlignments} isIcon={true} />
+									options={iconAlignments} isIcon={true} /> */}
 							</PanelBody>
 						)}
 
