@@ -59,9 +59,14 @@
       "type": "string",
       "default": "500px"
     },
-    "prefix": {
-      "type": "string",
-      "default": ""
+    "padding": {
+      "type": "object",
+      "default": {
+        "top": "0px",
+        "right": "0px",
+        "bottom": "0px",
+        "left": "0px"
+      }
     },
     "alignment": {
       "type": "string",

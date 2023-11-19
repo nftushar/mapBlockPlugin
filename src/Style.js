@@ -13,8 +13,7 @@ const Style = ({ attributes, clientId }) => {
             filter: blur(${blur}px) brightness(${brightness}%) contrast(${contrast}%) saturate(${saturate}%) hue-rotate(${hue}deg);
         }
 
-        #bBlocks-map-block-${clientId} .mapContainer .custom-embed:hover {
-          height: ${hoverFilters.height}; 
+        #bBlocks-map-block-${clientId} .mapContainer .custom-embed:hover { 
           filter: blur(${hoverFilters.blur}px) brightness(${hoverFilters.brightness}%) contrast(${hoverFilters.contrast}%) saturate(${hoverFilters.saturate}%) hue-rotate(${hoverFilters.hue}deg);
           transition: 0.3s;
       }

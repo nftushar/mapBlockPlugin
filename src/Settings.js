@@ -2,7 +2,7 @@
 import { __ } from "@wordpress/i18n";
 import { InspectorControls } from "@wordpress/block-editor";
 import { solidStar, outlineStar } from './utils/icons';
-import { PanelBody, TabPanel, TextControl, RangeControl, __experimentalUnitControl as UnitControl, } from "@wordpress/components";
+import { PanelBody, TabPanel, TextControl, RangeControl, __experimentalUnitControl as UnitControl, __experimentalBoxControl as BoxControl } from "@wordpress/components";
 
 import { BtnGroup, ColorControl, Background } from "../../Components"
 
@@ -19,7 +19,7 @@ const iconAlignments = [
 
 
 const Settings = ({ attributes, setAttributes }) => {
-	const { background, filters,hoverFilters, mapLocation, apiKey, zoom, height } = attributes;
+	const { background, filters, hoverFilters, padding, mapLocation, apiKey, zoom, height } = attributes;
 
 	// console.log(filters.blur);
 
@@ -33,6 +33,7 @@ const Settings = ({ attributes, setAttributes }) => {
 				tabs={[
 					{ name: "general", title: __("General") },
 					{ name: "style", title: __("Style") },
+					{ name: "advance", title: __("Advance") },
 				]}
 			>
 				{(tab) => (
@@ -207,6 +208,18 @@ const Settings = ({ attributes, setAttributes }) => {
 									)}
 
 								</TabPanel>
+							</PanelBody>
+						)}
+						{tab.name === "advance" && (
+							<PanelBody
+								className="bPlPanelBody"
+								title={__("Advance", "map-block")} >
+								<BoxControl
+									value={padding}
+									onChange={(val) => setAttributes({ padding: val })}
+								/>
+
+
 							</PanelBody>
 						)}
 					</>

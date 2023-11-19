@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-
 import Settings from "./Settings";
 import Map from "./components/Map";
 import Style from "./Style";
@@ -8,6 +7,7 @@ import Style from "./Style";
 const Edit = (props) => {
   const { className, attributes, setAttributes, clientId, isSelected } = props;
   const { src } = attributes;
+  // console.log(isSelected);
 
   useEffect(() => {
     clientId && setAttributes({ cId: clientId });
