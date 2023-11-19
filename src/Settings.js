@@ -19,7 +19,7 @@ const iconAlignments = [
 
 
 const Settings = ({ attributes, setAttributes }) => {
-	const { background, filters, mapLocation, apiKey, zoom, height } = attributes;
+	const { background, filters,hoverFilters, mapLocation, apiKey, zoom, height } = attributes;
 
 	// console.log(filters.blur);
 
@@ -56,54 +56,6 @@ const Settings = ({ attributes, setAttributes }) => {
 									onChange={(val) => setAttributes({ background: val })}
 									defaults={{ color: '#000' }}
 								/>
-
-
-								<PanelBody
-									className="bPlPanelBody"
-									title={__("Filters", "map-block")}
-								>
-									<RangeControl
-										label={__("Blur", "map-block")}
-										value={filters.blur}
-										onChange={(val) => setAttributes({ filters: { ...filters, blur: val } })}
-										min={0}
-										max={10}
-										step={0.1}
-									/>
-									<RangeControl
-										label={__("Brightness", "map-block")}
-										value={filters.brightness}
-										onChange={(val) => setAttributes({ filters: { ...filters, brightness: val } })}
-										min={0}
-										max={200}
-										step={1}
-									/>
-									<RangeControl
-										label={__("Contrast", "map-block")}
-										value={filters.contrast}
-										onChange={(val) => setAttributes({ filters: { ...filters, contrast: val } })}
-										min={0}
-										max={200}
-										step={1}
-									/>
-									<RangeControl
-										label={__("Saturate", "map-block")}
-										value={filters.saturate}
-										onChange={(val) => setAttributes({ filters: { ...filters, saturate: val } })}
-										min={0}
-										max={200}
-										step={1}
-									/>
-									<RangeControl
-										label={__("Hue", "map-block")}
-										value={filters.hue}
-										onChange={(val) => setAttributes({ filters: { ...filters, hue: val } })}
-										min={0}
-										max={360}
-										step={1}
-									/>
-								</PanelBody>
-
 
 
 								<TextControl
@@ -149,9 +101,112 @@ const Settings = ({ attributes, setAttributes }) => {
 						{tab.name === "style" && (
 							<PanelBody
 								className="bPlPanelBody"
-								title={__("Title", "map-block")}
-							>
-								{/* ... (other style controls) */}
+								title={__("Title", "map-block")} >
+
+								<TabPanel className="bPlTabPanel"
+									tabs={[
+										{ name: "normal", title: __("Normal") },
+										{ name: "hover", title: __("Hover") },
+									]} >
+
+									{(tab) => (
+										<>
+											{tab.name === "normal" && (
+												<PanelBody
+													className="bPlPanelBody" >
+
+													<RangeControl
+														label={__("Blur", "map-block")}
+														value={filters.blur}
+														onChange={(val) => setAttributes({ filters: { ...filters, blur: val } })}
+														min={0}
+														max={10}
+														step={0.1}
+													/>
+													<RangeControl
+														label={__("Brightness", "map-block")}
+														value={filters.brightness}
+														onChange={(val) => setAttributes({ filters: { ...filters, brightness: val } })}
+														min={0}
+														max={200}
+														step={1}
+													/>
+													<RangeControl
+														label={__("Contrast", "map-block")}
+														value={filters.contrast}
+														onChange={(val) => setAttributes({ filters: { ...filters, contrast: val } })}
+														min={0}
+														max={200}
+														step={1}
+													/>
+													<RangeControl
+														label={__("Saturate", "map-block")}
+														value={filters.saturate}
+														onChange={(val) => setAttributes({ filters: { ...filters, saturate: val } })}
+														min={0}
+														max={200}
+														step={1}
+													/>
+													<RangeControl
+														label={__("Hue", "map-block")}
+														value={filters.hue}
+														onChange={(val) => setAttributes({ filters: { ...filters, hue: val } })}
+														min={0}
+														max={360}
+														step={1}
+													/>
+												</PanelBody>
+											)}
+											{tab.name === "hover" && (
+												<PanelBody
+													className="bPlPanelBody" >
+
+													<RangeControl
+														label={__("Blur", "map-block")}
+														value={hoverFilters.blur}
+														onChange={(val) => setAttributes({ hoverFilters: { ...hoverFilters, blur: val } })}
+														min={0}
+														max={10}
+														step={0.1}
+													/>
+													<RangeControl
+														label={__("Brightness", "map-block")}
+														value={hoverFilters.brightness}
+														onChange={(val) => setAttributes({ hoverFilters: { ...hoverFilters, brightness: val } })}
+														min={0}
+														max={200}
+														step={1}
+													/>
+													<RangeControl
+														label={__("Contrast", "map-block")}
+														value={hoverFilters.contrast}
+														onChange={(val) => setAttributes({ hoverFilters: { ...hoverFilters, contrast: val } })}
+														min={0}
+														max={200}
+														step={1}
+													/>
+													<RangeControl
+														label={__("Saturate", "map-block")}
+														value={hoverFilters.saturate}
+														onChange={(val) => setAttributes({ hoverFilters: { ...hoverFilters, saturate: val } })}
+														min={0}
+														max={200}
+														step={1}
+													/>
+													<RangeControl
+														label={__("Hue", "map-block")}
+														value={hoverFilters.hue}
+														onChange={(val) => setAttributes({ hoverFilters: { ...hoverFilters, hue: val } })}
+														min={0}
+														max={360}
+														step={1}
+													/>
+												</PanelBody>
+											)}
+										</>
+									)}
+
+								</TabPanel>
 							</PanelBody>
 						)}
 					</>

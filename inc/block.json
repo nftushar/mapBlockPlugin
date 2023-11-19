@@ -45,6 +45,16 @@
         "hue": 1
       }
     },
+    "hoverFilters": {
+      "type": "object",
+      "default": {
+        "blur": 0,
+        "brightness": 60,
+        "contrast": 150,
+        "saturate": 200,
+        "hue": 10
+      }
+    },
     "height": {
       "type": "string",
       "default": "500px"

@@ -10,12 +10,6 @@ const Map = ({ attributes, setAttributes }) => {
 
     return (
         <div className="mapContainer">
-            <label htmlFor="locationInput">Enter Location or Coordinates (latitude, longitude):</label>
-            <input type="text" id="locationInput" placeholder="e.g., Dhaka, Bangladesh or 25.6234, 88.6258" />
-
-            <label htmlFor="apiKeyInput">Enter Google Maps API Key:</label>
-            <input type="text" id="apiKeyInput" value={apiKey} onChange={(e) => setAttributes({ apiKey: e.target.value })} />
-
             <div className="custom-embed">
                 <iframe
                     id="mapFrame"
