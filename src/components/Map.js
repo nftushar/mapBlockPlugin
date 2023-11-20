@@ -4,9 +4,7 @@ const Map = ({ attributes, setAttributes }) => {
     const { apiKey, mapLocation, zoom, filters } = attributes;
 
     // Construct the filter style string
-    const filterStyle = filters
-        ? `filter: blur(${filters.blur}px) brightness(${filters.brightness}%) contrast(${filters.contrast}%) saturate(${filters.saturate}%) hue-rotate(${filters.hue}deg);`
-        : '';
+   
 
     return (
         <div className="mapContainer">

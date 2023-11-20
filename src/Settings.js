@@ -21,10 +21,7 @@ const iconAlignments = [
 const Settings = ({ attributes, setAttributes }) => {
 	const { background, filters, hoverFilters, padding, mapLocation, apiKey, zoom, height } = attributes;
 
-	// console.log(filters.blur);
-
-
-
+	// console.log(padding); 
 
 	return (
 		<InspectorControls>
@@ -215,11 +212,15 @@ const Settings = ({ attributes, setAttributes }) => {
 								className="bPlPanelBody"
 								title={__("Advance", "map-block")} >
 								<BoxControl
-									value={padding}
-									onChange={(val) => setAttributes({ padding: val })}
-								/>
-
-
+									label={__("Padding", "tcb")}
+									values={padding}
+									resetValues={{
+										"top": "0px",
+										"right": "0px",
+										"bottom": "0px",
+										"left": "0px"
+									}}
+									onChange={(value) => setAttributes({ padding: value })} />
 							</PanelBody>
 						)}
 					</>
