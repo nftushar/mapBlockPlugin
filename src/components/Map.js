@@ -4,7 +4,7 @@ const Map = ({ attributes, setAttributes }) => {
     const { apiKey, mapLocation, zoom, filters } = attributes;
 
     // Construct the filter style string
-   
+
 
     return (
         <div className="mapContainer">
@@ -14,7 +14,6 @@ const Map = ({ attributes, setAttributes }) => {
                     loading="lazy"
                     title="Dhaka, Bangladesh"
                     src={`https://maps.google.com/maps?q=${encodeURIComponent(mapLocation)}&key=${apiKey}&t=m&z=${zoom}&output=embed&iwloc=near`}
-                    style={{ width: '100%', height: '100%', border: '0', ...filters }}
                 ></iframe>
             </div>
         </div>
