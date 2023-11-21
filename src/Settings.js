@@ -2,7 +2,7 @@
 import { __ } from "@wordpress/i18n";
 import { InspectorControls } from "@wordpress/block-editor";
 import { solidStar, outlineStar } from './utils/icons';
-import { PanelBody, TabPanel, TextControl, RangeControl, __experimentalUnitControl as UnitControl, __experimentalBoxControl as BoxControl } from "@wordpress/components";
+import { PanelBody, TabPanel, TextControl, RangeControl, __experimentalUnitControl as UnitControl, __experimentalBoxControl as BoxControl, PanelRow } from "@wordpress/components";
 
 import { BtnGroup, ColorControl, Background } from "../../Components"
 
@@ -19,7 +19,10 @@ const iconAlignments = [
 
 
 const Settings = ({ attributes, setAttributes }) => {
-	const { background, filters, hoverFilters, padding, mapLocation, apiKey, zoom, height } = attributes;
+	const { background, filters, hoverFilters, padding, mapLocation, apiKey, zoom, height, floating } = attributes;
+	const { translate, rotate } = floating;
+	const { translateX, translateY, duration, delay } = translate;
+	const { rotateX, rotateY, rotateZ, rotateDuration, rotateDelay } = rotate;
 
 	// console.log(padding); 
 
@@ -208,21 +211,107 @@ const Settings = ({ attributes, setAttributes }) => {
 							</PanelBody>
 						)}
 						{tab.name === "advance" && (
-							<PanelBody
-								className="bPlPanelBody"
-								title={__("Advance", "map-block")} >
-								<BoxControl
-									label={__("Padding", "tcb")}
-									values={padding}
-									resetValues={{
-										"top": "0px",
-										"right": "0px",
-										"bottom": "0px",
-										"left": "0px"
-									}}
-									onChange={(value) => setAttributes({ padding: value })} />
-							</PanelBody>
+							<>
+								<PanelBody
+									className="bPlPanelBody"
+									title={__("Advance", "map-block")} >
+									<BoxControl
+										label={__("Padding", "tcb")}
+										values={padding}
+										resetValues={{
+											"top": "0px",
+											"right": "0px",
+											"bottom": "0px",
+											"left": "0px"
+										}}
+
+										onChange={(value) => setAttributes({ padding: value })} />
+								</PanelBody>
+								<PanelBody
+									className="bPlPanelBody"
+									title={__("Translate", "map-block")}
+								>
+									<RangeControl
+										label={__("translate-X", "map-block")}
+										value={translateX}
+										onChange={(val) => setAttributes({ floating: { ...floating, translate: { ...floating.translate, translateX: val } } })}
+										min={0}
+										max={10}
+										step={0.1}
+									/>
+									<RangeControl
+										label={__("translate-Y", "map-block")}
+										value={translateY}
+										onChange={(val) => setAttributes({ floating: { ...floating, translate: { ...floating.translate, translateY: val } } })}
+										min={0}
+										max={10}
+										step={0.1}
+									/>
+									<RangeControl
+										label={__("duration", "map-block")}
+										value={duration}
+										onChange={(val) => setAttributes({ floating: { ...floating, translate: { ...floating.translate, duration: val } } })}
+										min={0}
+										max={10}
+										step={0.1}
+									/>
+									<RangeControl
+										label={__("delay", "map-block")}
+										value={delay}
+										onChange={(val) => setAttributes({ floating: { ...floating, translate: { ...floating.translate, delay: val } } })}
+										min={0}
+										max={10}
+										step={0.1}
+									/>
+								</PanelBody>
+								<PanelBody
+									className="bPlPanelBody"
+									title={__("Rotate", "map-block")}
+								>
+									<RangeControl
+										label={__("Rotate-X", "map-block")}
+										value={rotateX}
+										onChange={(val) => setAttributes({ floating: { ...floating, translate: { ...floating.translate, rotateX: val } } })}
+										min={0}
+										max={10}
+										step={0.1}
+									/>
+									<RangeControl
+										label={__("translate-Y", "map-block")}
+										value={rotateY}
+										onChange={(val) => setAttributes({ floating: { ...floating, translate: { ...floating.translate, rotateY: val } } })}
+										min={0}
+										max={10}
+										step={0.1}
+									/>
+									<RangeControl
+										label={__("translate-Z", "map-block")}
+										value={rotateZ}
+										onChange={(val) => setAttributes({ floating: { ...floating, translate: { ...floating.translate, rotateZ: val } } })}
+										min={0}
+										max={10}
+										step={0.1}
+									/>
+									<RangeControl
+										label={__("duration", "map-block")}
+										value={rotateDuration}
+										onChange={(val) => setAttributes({ floating: { ...floating, translate: { ...floating.translate, rotateDuration: val } } })}
+										min={0}
+										max={10}
+										step={0.1}
+									/>
+									<RangeControl
+										label={__("delay", "map-block")}
+										value={rotateDelay}
+										onChange={(val) => setAttributes({ floating: { ...floating, translate: { ...floating.translate, rotateDelay: val } } })}
+										min={0}
+										max={10}
+										step={0.1}
+									/>
+								</PanelBody>
+							</>
 						)}
+
 					</>
 				)}
 			</TabPanel>

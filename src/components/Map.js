@@ -1,10 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
-const Map = ({ attributes, setAttributes }) => {
-    const { apiKey, mapLocation, zoom, filters } = attributes;
-
-    // Construct the filter style string
-
+const Map = ({ attributes,  }) => {
+    const { apiKey, mapLocation, zoom } = attributes;
 
     return (
         <div className="mapContainer">

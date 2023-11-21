@@ -68,6 +68,24 @@
         "left": "0px"
       }
     },
+    "floating": {
+      "type": "object",
+      "default": {
+        "translate": {
+          "translateX": "0px",
+          "translateY": "0px",
+          "duration": "1000",
+          "delay": "0"
+        },
+        "rotate": {
+          "rotateX": "0px",
+          "rotateY": "0px",
+          "rotateZ": "0px",
+          "rotateDuration": "1000",
+          "rotateDelay": "0"
+        }
+      }
+    },
     "alignment": {
       "type": "string",
       "default": "center"
