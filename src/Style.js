@@ -13,7 +13,7 @@ const Style = ({ attributes, clientId }) => {
 
   // console.log(translateX);
   const mapMain = `#bBlocks-map-block-${clientId}`;
-  const mapAN = `${mapMain} .mapContainer .custom-embed `;
+  const mapAN = `${mapMain} .mapContainer .custom-embed`;
   const mapSl = `${mapAN} #mapFrame`;
 
 
@@ -30,6 +30,11 @@ const Style = ({ attributes, clientId }) => {
           }
         }   
         
+        ${mapAN}:hover { 
+          filter: blur(${hoverFilters.blur}px) brightness(${hoverFilters.brightness}%) contrast(${hoverFilters.contrast}%) saturate(${hoverFilters.saturate}%) hue-rotate(${hoverFilters.hue}deg);
+          transition: 0.3s;
+        } 
+        
         ${mapMain}{
           ${getBackgroundCSS(background)}
         }
@@ -43,13 +48,17 @@ const Style = ({ attributes, clientId }) => {
         ${mapAN} {
           height: ${height}; 
           filter: blur(${blur}px) brightness(${brightness}%) contrast(${contrast}%) saturate(${saturate}%) hue-rotate(${hue}deg);
-          animation: floatingAnimation 3s infinite alternate ease-in-out;
-        }
-
+          animation: floatingAnimation ${duration}s infinite alternate ease-in-out ${delay}s;
+        } 
         ${mapAN}:hover { 
           filter: blur(${hoverFilters.blur}px) brightness(${hoverFilters.brightness}%) contrast(${hoverFilters.contrast}%) saturate(${hoverFilters.saturate}%) hue-rotate(${hoverFilters.hue}deg);
-          transition: 0.3s;
-        } 
+          transition: all 0.3s ease-in-out;
+        }
+        
+        ${mapAN}.custom-animation-class {
+          animation-duration: 5s;
+          animation-delay: 2s;
+        }
         #bBlocks-map-block-${clientId} .bBlocks-map-block {
             ${getBorderCSS(border)}; 
             box-shadow:${getMultiShadowCSS(shadow)};
