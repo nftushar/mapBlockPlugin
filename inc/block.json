@@ -62,27 +62,31 @@
     "padding": {
       "type": "object",
       "default": {
-        "top": "0px",
-        "right": "0px",
-        "bottom": "0px",
-        "left": "0px"
+        "top": "5x",
+        "right": "5px",
+        "bottom": "5px",
+        "left": "5px"
       }
     },
     "floating": {
       "type": "object",
       "default": {
         "translate": {
-          "translateX": "0px",
-          "translateY": "0px",
+          "translateX": "15.8239",
+          "translateY": "1.08383",
           "duration": "1000",
           "delay": "0"
         },
         "rotate": {
-          "rotateX": "0px",
-          "rotateY": "0px",
-          "rotateZ": "0px",
+          "rotateX": "-21.5199",
+          "rotateY": "9.75444",
+          "rotateZ": "-36.4564",
           "rotateDuration": "1000",
           "rotateDelay": "0"
+        },
+        "scale": {
+          "scaleX": "0.803472",
+          "scaleY": "1.04335"
         }
       }
     },

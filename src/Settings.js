@@ -20,9 +20,12 @@ const iconAlignments = [
 
 const Settings = ({ attributes, setAttributes }) => {
 	const { background, filters, hoverFilters, padding, mapLocation, apiKey, zoom, height, floating } = attributes;
-	const { translate, rotate } = floating;
+	const { translate, rotate, scale } = floating;
 	const { translateX, translateY, duration, delay } = translate;
 	const { rotateX, rotateY, rotateZ, rotateDuration, rotateDelay } = rotate;
+	// console.log(scale);
+	const { scaleX, scaleY } = scale
+
 
 	// console.log(padding); 
 
@@ -228,6 +231,7 @@ const Settings = ({ attributes, setAttributes }) => {
 										onChange={(value) => setAttributes({ padding: value })} />
 								</PanelBody>
 								<PanelBody
+									initialOpen={false}
 									className="bPlPanelBody"
 									title={__("Translate", "map-block")}
 								>
@@ -236,24 +240,24 @@ const Settings = ({ attributes, setAttributes }) => {
 										value={translateX}
 										onChange={(val) => setAttributes({ floating: { ...floating, translate: { ...floating.translate, translateX: val } } })}
 										min={0}
-										max={10}
-										step={0.1}
+										max={100}
+										step={1}
 									/>
 									<RangeControl
 										label={__("translate-Y", "map-block")}
 										value={translateY}
 										onChange={(val) => setAttributes({ floating: { ...floating, translate: { ...floating.translate, translateY: val } } })}
 										min={0}
-										max={10}
-										step={0.1}
+										max={100}
+										step={1}
 									/>
 									<RangeControl
 										label={__("duration", "map-block")}
 										value={duration}
 										onChange={(val) => setAttributes({ floating: { ...floating, translate: { ...floating.translate, duration: val } } })}
 										min={0}
-										max={10}
-										step={0.1}
+										max={100}
+										step={1}
 									/>
 									<RangeControl
 										label={__("delay", "map-block")}
@@ -261,52 +265,76 @@ const Settings = ({ attributes, setAttributes }) => {
 										onChange={(val) => setAttributes({ floating: { ...floating, translate: { ...floating.translate, delay: val } } })}
 										min={0}
 										max={10}
-										step={0.1}
+										step={1}
 									/>
 								</PanelBody>
 								<PanelBody
+									initialOpen={false}
 									className="bPlPanelBody"
 									title={__("Rotate", "map-block")}
 								>
 									<RangeControl
 										label={__("Rotate-X", "map-block")}
 										value={rotateX}
-										onChange={(val) => setAttributes({ floating: { ...floating, translate: { ...floating.translate, rotateX: val } } })}
+										onChange={(val) => setAttributes({ floating: { ...floating, rotate: { ...floating.rotate, rotateX: val } } })}
 										min={0}
-										max={10}
-										step={0.1}
+										max={180}
+										step={1}
 									/>
 									<RangeControl
-										label={__("translate-Y", "map-block")}
+										label={__("Rotate-Y", "map-block")}
 										value={rotateY}
-										onChange={(val) => setAttributes({ floating: { ...floating, translate: { ...floating.translate, rotateY: val } } })}
+										onChange={(val) => setAttributes({ floating: { ...floating, rotate: { ...floating.rotate, rotateY: val } } })}
 										min={0}
-										max={10}
-										step={0.1}
+										max={180}
+										step={1}
 									/>
 									<RangeControl
-										label={__("translate-Z", "map-block")}
+										label={__("Rotate-Z", "map-block")}
 										value={rotateZ}
-										onChange={(val) => setAttributes({ floating: { ...floating, translate: { ...floating.translate, rotateZ: val } } })}
+										onChange={(val) => setAttributes({ floating: { ...floating, rotate: { ...floating.rotate, rotateZ: val } } })}
 										min={0}
-										max={10}
-										step={0.1}
+										max={180}
+										step={1}
 									/>
 									<RangeControl
 										label={__("duration", "map-block")}
 										value={rotateDuration}
-										onChange={(val) => setAttributes({ floating: { ...floating, translate: { ...floating.translate, rotateDuration: val } } })}
+										onChange={(val) => setAttributes({ floating: { ...floating, rotate: { ...floating.rotate, rotateDuration: val } } })}
 										min={0}
-										max={10}
-										step={0.1}
+										max={10000}
+										step={1}
 									/>
 									<RangeControl
 										label={__("delay", "map-block")}
 										value={rotateDelay}
-										onChange={(val) => setAttributes({ floating: { ...floating, translate: { ...floating.translate, rotateDelay: val } } })}
+										onChange={(val) => setAttributes({ floating: { ...floating, rotate: { ...floating.rotate, rotateDelay: val } } })}
 										min={0}
-										max={10}
+										max={5000}
+										step={1}
+									/>
+								</PanelBody>
+
+								<PanelBody
+									initialOpen={false}
+									className="bPlPanelBody"
+									title={__("scale", "map-block")}
+								>
+									<RangeControl
+										label={__("scale-X", "map-block")}
+										value={scaleX}
+										onChange={(val) => setAttributes({ floating: { ...floating, scale: { ...floating.scale, scaleX: val } } })}
+										min={0}
+										max={5}
 										step={0.1}
+									/>
+									<RangeControl
+										label={__("scale-Y", "map-block")}
+										value={scaleY}
+										onChange={(val) => setAttributes({ floating: { ...floating, scale: { ...floating.scale, scaleY: val } } })}
+										min={0}
+										max={5}
+										step={1}
 									/>
 								</PanelBody>
 							</>
