@@ -32,8 +32,10 @@
       "default": 10
     },
     "background": {
-      "type": "string",
-      "default": "#7a7a7a"
+      "type": "object",
+      "default": {
+        "color": "#0000"
+      }
     },
     "filters": {
       "type": "object",

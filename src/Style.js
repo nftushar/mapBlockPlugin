@@ -1,8 +1,9 @@
-import { getBorderCSS, getMultiShadowCSS } from "../../Components/utils/getCSS";
+import { getBackgroundCSS, getBorderCSS, getMultiShadowCSS } from "../../Components/utils/getCSS";
 import { getBoxValue } from './utils/functions';
 
 const Style = ({ attributes, clientId }) => {
-  const { height, border, shadow, filters, hoverFilters, padding, floating } = attributes;
+  const { height, border, shadow, filters, hoverFilters, padding, floating, background } = attributes;
+  console.log(background);
 
   const { blur, brightness, contrast, saturate, hue } = filters;
   const { translate, rotate, scale } = floating;
@@ -11,8 +12,8 @@ const Style = ({ attributes, clientId }) => {
   const { scaleX, scaleY } = scale
 
   // console.log(translateX);
-
-  const mapAN = `#bBlocks-map-block-${clientId} .mapContainer .custom-embed `;
+  const mapMain = `#bBlocks-map-block-${clientId}`;
+  const mapAN = `${mapMain} .mapContainer .custom-embed `;
   const mapSl = `${mapAN} #mapFrame`;
 
 
@@ -29,6 +30,10 @@ const Style = ({ attributes, clientId }) => {
           }
         }   
         
+        ${mapMain}{
+          ${getBackgroundCSS(background)}
+        }
+
         ${mapSl} {
           padding: ${getBoxValue(padding)};
           height: ${height}; 
