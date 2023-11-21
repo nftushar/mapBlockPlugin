@@ -6,8 +6,8 @@ import Style from "./Style";
 
 const Edit = (props) => {
   const { className, attributes, setAttributes, clientId, isSelected } = props;
-  const { src } = attributes;
-  // console.log(isSelected);
+ 
+  console.log(className);
 
   useEffect(() => {
     clientId && setAttributes({ cId: clientId });
