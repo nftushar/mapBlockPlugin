@@ -1,17 +1,19 @@
 import { getBackgroundCSS, getBorderCSS, getMultiShadowCSS } from "../../Components/utils/getCSS";
 import { getBoxValue } from './utils/functions';
 
+
 const Style = ({ attributes, clientId }) => {
   const { height, border, shadow, filters, hoverFilters, padding, floating, background } = attributes;
 
   const { blur, brightness, contrast, saturate, hue } = filters;
-  const { translate, rotate, scale } = floating;
+  const { translate, rotate, scale, floatingCon } = floating;
   const { translateX, translateY, duration, delay } = translate;
   const { rotateX, rotateY, rotateZ, rotateDuration, rotateDelay } = rotate;
   const { scaleX, scaleY } = scale;
 
   const mapMain = `#bBlocks-map-block-${clientId}`;
-  const mapAN = `${mapMain} .mapContainer .custom-embed`;
+  const mapCon = `${mapMain} .mapContainer`
+  const mapAN = `${mapCon}  .custom-embed`;
   const mapSl = `${mapAN} #mapFrame`;
 
   return (
@@ -26,15 +28,24 @@ const Style = ({ attributes, clientId }) => {
             transform: translateX(${translateX}px) translateY(${translateY}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotateZ(${rotateZ}deg) scaleX(${scaleX}) scaleY(${scaleY});
           }
         }   
-        
+          ${mapCon}{
+            ${getBackgroundCSS(background)}
+          }
+
+        ${mapAN} {
+          height: ${height + 10}; 
+          filter: blur(${blur}px) brightness(${brightness}%) contrast(${contrast}%) saturate(${saturate}%) hue-rotate(${hue}deg);
+          
+          ${floatingCon ? `
+            animation: floatingAnimation ${duration}s infinite alternate ease-in-out ${delay}s;
+          ` : ''}
+        } 
+
         ${mapAN}:hover { 
           filter: blur(${hoverFilters.blur}px) brightness(${hoverFilters.brightness}%) contrast(${hoverFilters.contrast}%) saturate(${hoverFilters.saturate}%) hue-rotate(${hoverFilters.hue}deg);
           transition: all 0.3s ease-in-out;
         } 
-        
-        ${mapMain}{
-          ${getBackgroundCSS(background)}
-        }
+         
 
         ${mapSl} {
           padding: ${getBoxValue(padding)};
@@ -42,16 +53,7 @@ const Style = ({ attributes, clientId }) => {
           width: 100%;
         }
         
-        ${mapAN} {
-          height: ${height}; 
-          filter: blur(${blur}px) brightness(${brightness}%) contrast(${contrast}%) saturate(${saturate}%) hue-rotate(${hue}deg);
-          animation: floatingAnimation ${duration}s infinite alternate ease-in-out ${delay}s;
-        } 
-
-        ${mapAN}:hover { 
-          filter: blur(${hoverFilters.blur}px) brightness(${hoverFilters.brightness}%) contrast(${hoverFilters.contrast}%) saturate(${hoverFilters.saturate}%) hue-rotate(${hoverFilters.hue}deg);
-          transition: all 0.3s ease-in-out;
-        }
+      
         
         ${mapAN}.custom-animation-class {
           animation-duration: ${rotateDuration}s;

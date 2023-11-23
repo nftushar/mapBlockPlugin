@@ -19,4 +19,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
         mapEl?.removeAttribute("data-attributes");
     });
-});
+}); 

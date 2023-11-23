@@ -64,7 +64,7 @@
     "padding": {
       "type": "object",
       "default": {
-        "top": "5x",
+        "top": "5px",
         "right": "5px",
         "bottom": "5px",
         "left": "5px"
@@ -73,22 +73,23 @@
     "floating": {
       "type": "object",
       "default": {
+        "floatingCon": true,
         "translate": {
-          "translateX": "15.8239",
-          "translateY": "1.08383",
-          "duration": "1000",
-          "delay": "0"
+          "translateX": 15.8239,
+          "translateY": 1.08383,
+          "duration": 1000,
+          "delay": 0
         },
         "rotate": {
-          "rotateX": "-21.5199",
-          "rotateY": "9.75444",
-          "rotateZ": "-36.4564",
-          "rotateDuration": "1000",
-          "rotateDelay": "0"
+          "rotateX": -21.5199,
+          "rotateY": 9.75444,
+          "rotateZ": -36.4564,
+          "rotateDuration": 1000,
+          "rotateDelay": 0
         },
         "scale": {
-          "scaleX": "0.803472",
-          "scaleY": "1.04335"
+          "scaleX": 0.803472,
+          "scaleY": 1.04335
         }
       }
     },
