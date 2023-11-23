@@ -4,7 +4,7 @@ import { __ } from "@wordpress/i18n";
 import { InspectorControls } from "@wordpress/block-editor";
 import { PanelBody, TabPanel, TextControl, RangeControl, __experimentalUnitControl as UnitControl, __experimentalBoxControl as BoxControl, PanelRow, ToggleControl } from "@wordpress/components";
 
-import { BtnGroup, ColorControl, Background } from "../../Components";
+import { BtnGroup, ColorControl, Background, BorderControl } from "../../Components";
 import { solidStar, outlineStar } from './utils/icons';
 
 const iconOptions = [
@@ -18,13 +18,13 @@ const iconAlignments = [
 ];
 
 const Settings = ({ attributes, setAttributes }) => {
-	const { background, filters, hoverFilters, padding, mapLocation, apiKey, zoom, height, floating } = attributes;
+	const { background, filters, hoverFilters, padding, mapLocation, apiKey, zoom, height, floating, border } = attributes;
 	const { translate, rotate, scale, floatingCon } = floating;
 	const { translateX, translateY, duration, delay } = translate;
 	const { rotateX, rotateY, rotateZ, rotateDuration, rotateDelay } = rotate;
 	const { scaleX, scaleY } = scale;
 
- 
+
 	return (
 		<InspectorControls>
 			<TabPanel
@@ -44,19 +44,17 @@ const Settings = ({ attributes, setAttributes }) => {
 							>
 								<UnitControl
 									className="mt20"
-									label={__("Height", "info-cards")}
+									label={__("Height", "map-block")}
 									labelPosition="left"
 									value={height}
 									onChange={(val) => setAttributes({ height: val })}
 								/>
-
 								<Background
 									label={__('Background', 'map-block')}
 									value={background}
 									onChange={(val) => setAttributes({ background: val })}
 									defaults={{ color: '#000' }}
 								/>
-
 								<TextControl
 									className="mt20"
 									label={__("Location", "map-block")}
@@ -86,8 +84,13 @@ const Settings = ({ attributes, setAttributes }) => {
 						{tab.name === "style" && (
 							<PanelBody
 								className="bPlPanelBody"
-								title={__("Title", "map-block")}
-							>
+								title={__("Style", "map-block")}>
+
+								<PanelRow>
+									<BorderControl label={__('Border:', 'map-block')}
+										value={border} onChange={val => setAttributes({ border: val })}
+										defaults={{ radius: '5px' }} />
+								</PanelRow>
 
 								<TabPanel className="bPlTabPanel"
 									tabs={[
@@ -100,6 +103,7 @@ const Settings = ({ attributes, setAttributes }) => {
 											{tab.name === "normal" && (
 												<PanelBody
 													className="bPlPanelBody" >
+
 
 													<RangeControl
 														label={__("Blur", "map-block")}
@@ -267,7 +271,7 @@ const Settings = ({ attributes, setAttributes }) => {
 													/>
 												</PanelBody>
 												<PanelBody
-													initialOpen={false} 
+													initialOpen={false}
 													title={__("Rotate", "map-block")}
 												>
 													<RangeControl
@@ -313,7 +317,7 @@ const Settings = ({ attributes, setAttributes }) => {
 												</PanelBody>
 
 												<PanelBody
-													initialOpen={false} 
+													initialOpen={false}
 													title={__("Scale", "map-block")}
 												>
 													<RangeControl

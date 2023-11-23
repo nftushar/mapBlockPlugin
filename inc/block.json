@@ -93,6 +93,12 @@
         }
       }
     },
+    "border": {
+      "type": "object",
+      "default": {
+        "radius": "5px"
+      }
+    },
     "alignment": {
       "type": "string",
       "default": "center"

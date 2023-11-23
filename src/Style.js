@@ -32,8 +32,7 @@ const Style = ({ attributes, clientId }) => {
             ${getBackgroundCSS(background)}
           }
 
-        ${mapAN} {
-          height: ${height + 10}; 
+        ${mapAN} { 
           filter: blur(${blur}px) brightness(${brightness}%) contrast(${contrast}%) saturate(${saturate}%) hue-rotate(${hue}deg);
           
           ${floatingCon ? `
@@ -49,6 +48,7 @@ const Style = ({ attributes, clientId }) => {
 
         ${mapSl} {
           padding: ${getBoxValue(padding)};
+          ${getBorderCSS(border)}
           height: ${height}; 
           width: 100%;
         }

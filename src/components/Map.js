@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Map = ({ attributes,  }) => {
+const Map = ({ attributes, }) => {
     const { apiKey, mapLocation, zoom } = attributes;
 
     return (
@@ -11,7 +11,7 @@ const Map = ({ attributes,  }) => {
                     loading="lazy"
                     title="Dhaka, Bangladesh"
                     src={`https://maps.google.com/maps?q=${encodeURIComponent(mapLocation)}&key=${apiKey}&t=m&z=${zoom}&output=embed&iwloc=near`}
-                ></iframe>
+                />
             </div>
         </div>
     );
