@@ -253,7 +253,8 @@ const Settings = ({ attributes, setAttributes }) => {
 									<RangeControl
 										label={__("translate-X", "map-block")}
 										value={translateX}
-										onChange={(val) => setAttributes({ floating: { ...floating, translate: { ...floating.translate, translateX: val } } })}
+										onChange={(val) => updateObj('floating', 'rotate', val, 'rotateX')}
+										// onChange={(val) => setAttributes({ floating: { ...floating, translate: { ...floating.translate, translateX: val } } })}
 										min={0}
 										max={100}
 										step={1}
@@ -261,7 +262,8 @@ const Settings = ({ attributes, setAttributes }) => {
 									<RangeControl
 										label={__("translate-Y", "map-block")}
 										value={translateY}
-										onChange={(val) => setAttributes({ floating: { ...floating, translate: { ...floating.translate, translateY: val } } })}
+										onChange={(val) => updateObj('floating', 'rotate', val, 'rotateY')}
+										// onChange={(val) => setAttributes({ floating: { ...floating, translate: { ...floating.translate, translateY: val } } })}
 										min={0}
 										max={100}
 										step={1}
@@ -269,15 +271,17 @@ const Settings = ({ attributes, setAttributes }) => {
 									<RangeControl
 										label={__("duration", "map-block")}
 										value={duration}
-										onChange={(val) => setAttributes({ floating: { ...floating, translate: { ...floating.translate, duration: val } } })}
+										onChange={(val) => updateObj('floating', 'rotate', val, 'rotateZ')}
+										// onChange={(val) => setAttributes({ floating: { ...floating, translate: { ...floating.translate, duration: val } } })}
 										min={0}
 										max={100}
 										step={1}
 									/>
 									<RangeControl
 										label={__("delay", "map-block")}
-										value={delay}
-										onChange={(val) => setAttributes({ floating: { ...floating, translate: { ...floating.translate, delay: val } } })}
+										value={delay} 
+										onChange={(val) => updateObj('floating', 'rotate', val, 'rotateDelay')}
+
 										min={0}
 										max={10}
 										step={1}
@@ -328,7 +332,9 @@ const Settings = ({ attributes, setAttributes }) => {
 									<RangeControl
 										label={__("delay", "map-block")}
 										value={rotateDelay}
-										onChange={(val) => setAttributes({ floating: { ...floating, rotate: { ...floating.rotate, rotateDelay: val } } })}
+										// onChange={(val) => setAttributes({ floating: { ...floating, rotate: { ...floating.rotate, rotateDelay: val } } })}
+										onChange={(val) => updateObj('floating', 'rotate', val, 'rotateDelay')}
+
 										min={0}
 										max={5000}
 										step={1}
