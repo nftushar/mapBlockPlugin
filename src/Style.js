@@ -3,24 +3,23 @@ import { getBoxValue } from './utils/functions';
 
 
 const Style = ({ attributes, clientId }) => {
-  const { height, border, shadow, filters, hoverFilters, padding, floating, background } = attributes;
+  const { height, width, border, shadow, filters, hovFilters, padding, floating, background } = attributes;
 
   const { blur, brightness, contrast, saturate, hue } = filters;
-  const { translate, rotate, scale, floatingCon } = floating;
+  const { translate, rotate, scale, enabled: floatingEnabled } = floating;
   const { translateX, translateY, duration, delay } = translate;
   const { rotateX, rotateY, rotateZ, rotateDuration, rotateDelay } = rotate;
   const { scaleX, scaleY } = scale;
 
-  const mapMain = `#bBlocks-map-block-${clientId}`;
-  const mapCon = `${mapMain} .mapContainer`
-  const mapAN = `${mapCon}  .custom-embed`;
-  const mapSl = `${mapAN} #mapFrame`;
+  const mainSl = `#bBlocks-map-block-${clientId}`;
+  const containerSl = `${mainSl} .mapContainer`
+  const customEmbedSl = `${containerSl}  .custom-embed`;
+  const frameSl = `${customEmbedSl} #mapFrame`;
 
   return (
-    <style
-      dangerouslySetInnerHTML={{
-        __html: `      
-        @keyframes floatingAnimation {
+    <style dangerouslySetInnerHTML={{
+      __html: `      
+        @keyframes floatingAnimation${clientId} {
           0% {
             transform: translateX(0) translateY(0) rotateX(0) rotateY(0) rotateZ(0) scaleX(1) scaleY(1);
           }
@@ -28,25 +27,26 @@ const Style = ({ attributes, clientId }) => {
             transform: translateX(${translateX}px) translateY(${translateY}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotateZ(${rotateZ}deg) scaleX(${scaleX}) scaleY(${scaleY});
           }
         }   
-          ${mapCon}{
+          ${containerSl}{
+            width: ${width}; 
             ${getBackgroundCSS(background)}
           }
 
-        ${mapAN} { 
+        ${customEmbedSl} { 
           filter: blur(${blur}px) brightness(${brightness}%) contrast(${contrast}%) saturate(${saturate}%) hue-rotate(${hue}deg);
           
-          ${floatingCon ? `
-            animation: floatingAnimation ${duration}s infinite alternate ease-in-out ${delay}s;
+          ${floatingEnabled ? `
+            animation: floatingAnimation${clientId} ${duration}s infinite alternate ease-in-out ${delay}s;
           ` : ''}
         } 
 
-        ${mapAN}:hover { 
-          filter: blur(${hoverFilters.blur}px) brightness(${hoverFilters.brightness}%) contrast(${hoverFilters.contrast}%) saturate(${hoverFilters.saturate}%) hue-rotate(${hoverFilters.hue}deg);
+        ${customEmbedSl}:hover { 
+          filter: blur(${hovFilters.blur}px) brightness(${hovFilters.brightness}%) contrast(${hovFilters.contrast}%) saturate(${hovFilters.saturate}%) hue-rotate(${hovFilters.hue}deg);
           transition: all 0.3s ease-in-out;
         } 
          
 
-        ${mapSl} {
+        ${frameSl} {
           padding: ${getBoxValue(padding)};
           ${getBorderCSS(border)}
           height: ${height}; 
@@ -55,16 +55,16 @@ const Style = ({ attributes, clientId }) => {
         
       
         
-        ${mapAN}.custom-animation-class {
+        ${customEmbedSl}.custom-animation-class {
           animation-duration: ${rotateDuration}s;
           animation-delay: ${rotateDelay}s;
         }
         
-        #bBlocks-map-block-${clientId} .bBlocks-map-block {
+        ${mainSl} .bBlocks-map-block {
           ${getBorderCSS(border)}; 
           box-shadow:${getMultiShadowCSS(shadow)};
         }`,
-      }}
+    }}
     />
   );
 };

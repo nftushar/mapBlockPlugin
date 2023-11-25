@@ -18,12 +18,8 @@
     "cId": {
       "type": "string",
       "default": ""
-    },
-    "iconStyle": {
-      "type": "string",
-      "default": "solid"
-    },
-    "mapLocation": {
+    }, 
+    "location": {
       "type": "string",
       "default": "Dhaka"
     },
@@ -31,10 +27,37 @@
       "type": "number",
       "default": 10
     },
+    "alignment": {
+      "type": "string",
+      "default": "center"
+    },
+    "width": {
+      "type": "string",
+      "default": "600px"
+    },
+    "height": {
+      "type": "string",
+      "default": "500px"
+    },
     "background": {
       "type": "object",
       "default": {
         "color": "#0000"
+      }
+    },
+    "padding": {
+      "type": "object",
+      "default": {
+        "top": "5px",
+        "right": "5px",
+        "bottom": "5px",
+        "left": "5px"
+      }
+    },
+    "border": {
+      "type": "object",
+      "default": {
+        "radius": "5px"
       }
     },
     "filters": {
@@ -47,7 +70,7 @@
         "hue": 1
       }
     },
-    "hoverFilters": {
+    "hovFilters": {
       "type": "object",
       "default": {
         "blur": 0,
@@ -57,23 +80,10 @@
         "hue": 10
       }
     },
-    "height": {
-      "type": "string",
-      "default": "500px"
-    },
-    "padding": {
-      "type": "object",
-      "default": {
-        "top": "5px",
-        "right": "5px",
-        "bottom": "5px",
-        "left": "5px"
-      }
-    },
     "floating": {
       "type": "object",
       "default": {
-        "floatingCon": true,
+        "enabled": true,
         "translate": {
           "translateX": 15.8239,
           "translateY": 1.08383,
@@ -92,34 +102,6 @@
           "scaleY": 1.04335
         }
       }
-    },
-    "border": {
-      "type": "object",
-      "default": {
-        "radius": "5px"
-      }
-    },
-    "alignment": {
-      "type": "string",
-      "default": "center"
-    },
-    "textColor": {
-      "type": "string",
-      "default": "#7a7a7a"
-    },
-    "typography": {
-      "type": "object",
-      "default": {
-        "fontSize": "16px"
-      }
-    },
-    "textShadow": {
-      "type": "array",
-      "default": []
-    },
-    "gap": {
-      "type": "string",
-      "default": "10px"
     }
   },
   "supports": {
