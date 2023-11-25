@@ -3,7 +3,7 @@ Contributors:
 Donate link: https://gum.co/wpdonate/
 Tags: map-block, star, Map, Gutenberg block
 Requires at least: 5.0+
-Tested up to: 6.2.2
+Tested up to: 6.4.1
 Stable tag: 1.0.0
 Requires PHP: 7.1
 License: GPLv3 or later

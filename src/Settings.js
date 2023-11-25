@@ -49,24 +49,13 @@ const Settings = ({ attributes, setAttributes }) => {
 									value={height}
 									onChange={(val) => setAttributes({ height: val })}
 								/>
-								<Background
-									label={__('Background', 'map-block')}
-									value={background}
-									onChange={(val) => setAttributes({ background: val })}
-									defaults={{ color: '#000' }}
-								/>
-								<TextControl
-									className="mt20"
-									label={__("Location", "map-block")}
-									value={mapLocation}
-									onChange={(val) => setAttributes({ mapLocation: val })}
-								/>
 
 								<TextControl
 									className="mt20"
-									label={__("API Key", "map-block")}
-									value={apiKey}
-									onChange={(val) => setAttributes({ apiKey: val })}
+									labelPosition="left"
+									label={__("Location", "map-block")}
+									value={mapLocation}
+									onChange={(val) => setAttributes({ mapLocation: val })}
 								/>
 								<RangeControl
 									className="mt20"
@@ -85,12 +74,17 @@ const Settings = ({ attributes, setAttributes }) => {
 							<PanelBody
 								className="bPlPanelBody"
 								title={__("Style", "map-block")}>
-
-								<PanelRow>
+ 
+									<Background
+										className="mt20"
+										label={__('Background', 'map-block')}
+										value={background}
+										onChange={(val) => setAttributes({ background: val })}
+										defaults={{ color: '#000' }}
+									/>
 									<BorderControl label={__('Border:', 'map-block')}
 										value={border} onChange={val => setAttributes({ border: val })}
-										defaults={{ radius: '5px' }} />
-								</PanelRow>
+										defaults={{ radius: '5px' }} /> 
 
 								<TabPanel className="bPlTabPanel"
 									tabs={[
