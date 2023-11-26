@@ -1,21 +1,20 @@
 /* eslint-disable no-undef */
-import { useState } from 'react';
+// import { useState } from 'react';
 import { __ } from "@wordpress/i18n";
 import { InspectorControls } from "@wordpress/block-editor";
 import { PanelBody, TabPanel, TextControl, RangeControl, __experimentalUnitControl as UnitControl, __experimentalBoxControl as BoxControl, ToggleControl } from "@wordpress/components";
 
-import { BtnGroup, ColorControl, Background, BorderControl } from "../../Components";
-import { TextareaControl } from '@wordpress/components';
+import { Background, BorderControl, BtnGroup } from "../../Components";
 import { produce } from 'immer';
 
-const alignments = [
+const mapAlignments = [
 	{ label: __('left', 'map-block'), value: 'left', icon: 'editor-alignleft' },
 	{ label: __('center', 'map-block'), value: 'center', icon: 'editor-aligncenter' },
 	{ label: __('right', 'map-block'), value: 'right', icon: 'editor-alignright' }
 ];
 
 const Settings = ({ attributes, setAttributes }) => {
-	const { background, filters, hovFilters, padding, location, apiKey, zoom, height, width, floating, border } = attributes;
+	const { background, filters, hovFilters, padding, location, zoom, height, width, floating, border, alignment } = attributes;
 	const { translate, rotate, scale, enabled: floatingEnabled } = floating;
 	const { translateX, translateY, duration, delay } = translate;
 	const { rotateX, rotateY, rotateZ, rotateDuration, rotateDelay } = rotate;
@@ -60,8 +59,7 @@ const Settings = ({ attributes, setAttributes }) => {
 				{(tab) => <>
 					{tab.name === "general" && <PanelBody
 						className="bPlPanelBody"
-						title={__("Map", "map-block")}
-					>
+						title={__("Map", "map-block")} 	> 
 						<TextControl
 							label={__("Location", "map-block")}
 							value={location}
@@ -89,6 +87,12 @@ const Settings = ({ attributes, setAttributes }) => {
 								value={width}
 								onChange={(val) => setAttributes({ width: val })}
 							/>
+							<BtnGroup
+								className="mt20"
+								label={__("Alignment", "star-rating")}
+								value={alignment}
+								onChange={val => setAttributes({ alignment: val })}
+								options={mapAlignments} isIcon={true} />
 
 							<UnitControl
 								className='mt20'
@@ -136,7 +140,6 @@ const Settings = ({ attributes, setAttributes }) => {
 										<RangeControl
 											label={__("Blur", "map-block")}
 											value={filters.blur}
-											// onChange={(val) => setAttributes({ filters: { ...filters, blur: val } })}
 											onChange={(val) => updateObj('filters', 'blur', val)}
 											min={0}
 											max={10}
@@ -145,7 +148,6 @@ const Settings = ({ attributes, setAttributes }) => {
 										<RangeControl
 											label={__("Brightness", "map-block")}
 											value={filters.brightness}
-											// onChange={(val) => setAttributes({ filters: { ...filters, brightness: val } })}
 											onChange={(val) => updateObj('filters', 'brightness', val)}
 
 											min={0}
@@ -156,7 +158,6 @@ const Settings = ({ attributes, setAttributes }) => {
 											label={__("Contrast", "map-block")}
 											value={filters.contrast}
 											onChange={(val) => updateObj('filters', 'contrast', val)}
-											// onChange={(val) => setAttributes({ filters: { ...filters, contrast: val } })}
 											min={0}
 											max={200}
 											step={1}
@@ -165,7 +166,6 @@ const Settings = ({ attributes, setAttributes }) => {
 											label={__("Saturate", "map-block")}
 											value={filters.saturate}
 											onChange={(val) => updateObj('filters', 'saturate', val)}
-											// onChange={(val) => setAttributes({ filters: { ...filters, saturate: val } })}
 											min={0}
 											max={200}
 											step={1}
@@ -174,7 +174,6 @@ const Settings = ({ attributes, setAttributes }) => {
 											label={__("Hue", "map-block")}
 											value={filters.hue}
 											onChange={(val) => updateObj('filters', 'hue', val)}
-											// onChange={(val) => setAttributes({ filters: { ...filters, hue: val } })}
 											min={0}
 											max={360}
 											step={1}
@@ -188,7 +187,6 @@ const Settings = ({ attributes, setAttributes }) => {
 											value={hovFilters.blur}
 											onChange={(val) => updateObj('hovFilters', 'blur', val)}
 
-											// onChange={(val) => setAttributes({ hovFilters: { ...hovFilters, blur: val } })}
 											min={0}
 											max={10}
 											step={0.1}
@@ -197,7 +195,6 @@ const Settings = ({ attributes, setAttributes }) => {
 											label={__("Brightness", "map-block")}
 											value={hovFilters.brightness}
 											onChange={(val) => updateObj('hovFilters', 'brightness', val)}
-											// onChange={(val) => setAttributes({ hovFilters: { ...hovFilters, brightness: val } })}
 											min={0}
 											max={200}
 											step={1}
@@ -206,7 +203,6 @@ const Settings = ({ attributes, setAttributes }) => {
 											label={__("Contrast", "map-block")}
 											value={hovFilters.contrast}
 											onChange={(val) => updateObj('hovFilters', 'contrast', val)}
-											// onChange={(val) => setAttributes({ hovFilters: { ...hovFilters, contrast: val } })}
 											min={0}
 											max={200}
 											step={1}
@@ -215,7 +211,6 @@ const Settings = ({ attributes, setAttributes }) => {
 											label={__("Saturate", "map-block")}
 											value={hovFilters.saturate}
 											onChange={(val) => updateObj('hovFilters', 'saturate', val)}
-											// onChange={(val) => setAttributes({ hovFilters: { ...hovFilters, saturate: val } })}
 											min={0}
 											max={200}
 											step={1}
@@ -224,7 +219,6 @@ const Settings = ({ attributes, setAttributes }) => {
 											label={__("Hue", "map-block")}
 											value={hovFilters.hue}
 											onChange={(val) => updateObj('hovFilters', 'hue', val)}
-											// onChange={(val) => setAttributes({ hovFilters: { ...hovFilters, hue: val } })}
 											min={0}
 											max={360}
 											step={1}
@@ -240,7 +234,6 @@ const Settings = ({ attributes, setAttributes }) => {
 								label={__("Enable", "map-block")}
 								value={floatingEnabled}
 								checked={floatingEnabled}
-								// onChange={(val) => setAttributes({ floating: { ...floating, enabled: val } })}
 								onChange={(val) => updateObj('floating', 'enabled', val)}
 							/>
 
@@ -254,7 +247,6 @@ const Settings = ({ attributes, setAttributes }) => {
 										label={__("translate-X", "map-block")}
 										value={translateX}
 										onChange={(val) => updateObj('floating', 'rotate', val, 'rotateX')}
-										// onChange={(val) => setAttributes({ floating: { ...floating, translate: { ...floating.translate, translateX: val } } })}
 										min={0}
 										max={100}
 										step={1}
@@ -263,7 +255,6 @@ const Settings = ({ attributes, setAttributes }) => {
 										label={__("translate-Y", "map-block")}
 										value={translateY}
 										onChange={(val) => updateObj('floating', 'rotate', val, 'rotateY')}
-										// onChange={(val) => setAttributes({ floating: { ...floating, translate: { ...floating.translate, translateY: val } } })}
 										min={0}
 										max={100}
 										step={1}
@@ -272,14 +263,13 @@ const Settings = ({ attributes, setAttributes }) => {
 										label={__("duration", "map-block")}
 										value={duration}
 										onChange={(val) => updateObj('floating', 'rotate', val, 'rotateZ')}
-										// onChange={(val) => setAttributes({ floating: { ...floating, translate: { ...floating.translate, duration: val } } })}
 										min={0}
 										max={100}
 										step={1}
 									/>
 									<RangeControl
 										label={__("delay", "map-block")}
-										value={delay} 
+										value={delay}
 										onChange={(val) => updateObj('floating', 'rotate', val, 'rotateDelay')}
 
 										min={0}
@@ -296,7 +286,6 @@ const Settings = ({ attributes, setAttributes }) => {
 									<RangeControl
 										label={__("Rotate-X", "map-block")}
 										value={rotateX}
-										// onChange={(val) => setAttributes({ floating: { ...floating, rotate: { ...floating.rotate, rotateX: val } } })}
 										onChange={(val) => updateObj('floating', 'rotate', val, 'rotateX')}
 										min={0}
 										max={180}
@@ -306,7 +295,6 @@ const Settings = ({ attributes, setAttributes }) => {
 										label={__("Rotate-Y", "map-block")}
 										value={rotateY}
 										onChange={(val) => updateObj('floating', 'rotate', val, 'rotateY')}
-										// onChange={(val) => setAttributes({ floating: { ...floating, rotate: { ...floating.rotate, rotateY: val } } })}
 										min={0}
 										max={180}
 										step={1}
@@ -315,7 +303,6 @@ const Settings = ({ attributes, setAttributes }) => {
 										label={__("Rotate-Z", "map-block")}
 										value={rotateZ}
 										onChange={(val) => updateObj('floating', 'rotate', val, 'rotateZ')}
-										// onChange={(val) => setAttributes({ floating: { ...floating, rotate: { ...floating.rotate, rotateZ: val } } })}
 										min={0}
 										max={180}
 										step={1}
@@ -324,7 +311,6 @@ const Settings = ({ attributes, setAttributes }) => {
 										label={__("duration", "map-block")}
 										value={rotateDuration}
 										onChange={(val) => updateObj('floating', 'rotate', val, 'rotateDuration')}
-										// onChange={(val) => setAttributes({ floating: { ...floating, rotate: { ...floating.rotate, rotateDuration: val } } })}
 										min={0}
 										max={10000}
 										step={1}
@@ -332,7 +318,6 @@ const Settings = ({ attributes, setAttributes }) => {
 									<RangeControl
 										label={__("delay", "map-block")}
 										value={rotateDelay}
-										// onChange={(val) => setAttributes({ floating: { ...floating, rotate: { ...floating.rotate, rotateDelay: val } } })}
 										onChange={(val) => updateObj('floating', 'rotate', val, 'rotateDelay')}
 
 										min={0}
@@ -350,7 +335,6 @@ const Settings = ({ attributes, setAttributes }) => {
 										label={__("scale-X", "map-block")}
 										value={scaleX}
 										onChange={(val) => updateObj('floating', 'rotate', val, 'scaleX')}
-										// onChange={(val) => setAttributes({ floating: { ...floating, scale: { ...floating.scale, scaleX: val } } })}
 										min={0}
 										max={5}
 										step={0.1}
@@ -359,7 +343,6 @@ const Settings = ({ attributes, setAttributes }) => {
 										label={__("scale-Y", "map-block")}
 										value={scaleY}
 										onChange={(val) => updateObj('floating', 'rotate', val, 'scaleY')}
-										// onChange={(val) => setAttributes({ floating: { ...floating, scale: { ...floating.scale, scaleY: val } } })}
 										min={0}
 										max={5}
 										step={1}
