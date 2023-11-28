@@ -1,9 +1,9 @@
 === Map Block ===
 Contributors:  
 Donate link: https://gum.co/wpdonate/
-Tags: map-block, star, Map, Gutenberg block
+Tags: map-block, google-map, map 
 Requires at least: 5.0+
-Tested up to: 6.4.1
+Tested up to: 6.4.2
 Stable tag: 1.0.0
 Requires PHP: 7.1
 License: GPLv3 or later

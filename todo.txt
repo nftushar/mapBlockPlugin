@@ -1,4 +1,5 @@
-Features for Google Maps block
+Features for embedded iframe Google Maps block,
+
    Without API:
      Maps Location: Address, latitude and longitude
      CSS Filters, Hover

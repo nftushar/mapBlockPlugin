@@ -89,7 +89,7 @@ const Settings = ({ attributes, setAttributes }) => {
 							/>
 							<BtnGroup
 								className="mt20"
-								label={__("Alignment", "star-rating")}
+								label={__("Alignment", "map-block")}
 								value={alignment}
 								onChange={val => setAttributes({ alignment: val })}
 								options={mapAlignments} isIcon={true} />
@@ -111,7 +111,7 @@ const Settings = ({ attributes, setAttributes }) => {
 							/>
 
 							<BoxControl
-								label={__("Padding", "tcb")}
+								label={__("Padding", "map-block")}
 								values={padding}
 								resetValues={{
 									"top": "0px",
