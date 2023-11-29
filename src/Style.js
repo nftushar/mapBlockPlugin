@@ -11,7 +11,6 @@ const Style = ({ attributes, clientId }) => {
   const { rotateX, rotateY, rotateZ, rotateDuration, rotateDelay } = rotate;
   const { scaleX, scaleY } = scale;
 
-  const MainDiv = `#block-${clientId}`
   const mainSl = `#bBlocks-map-block-${clientId}`;
   const containerSl = `${mainSl} .mapContainer`
   const customEmbedSl = `${containerSl}  .custom-embed`;
@@ -29,19 +28,22 @@ const Style = ({ attributes, clientId }) => {
           }
         }   
 
-        
-         ${MainDiv} {
-          display: flex;
-          justify-content: ${alignment};
-        }
+        #bBlocks-map-block-282a2077-6cc7-4cc5-a66d-1e85a8fb0c27 {
+          display: grid;
+          justify-content: center;
+      }
+     
+      ${mainSl}{
+        display: grid;
+        justify-content: ${alignment};
+      }
 
-        ${mainSl} .bBlocks-map-block {
-         
-          ${getBorderCSS(border)}; 
+        ${mainSl} .bBlocks-map-block { 
           box-shadow:${getMultiShadowCSS(shadow)};
+
         }
 
-          ${containerSl}{
+          ${containerSl}{ 
             width: ${width}; 
             ${getBackgroundCSS(background)}
           }
@@ -65,7 +67,7 @@ const Style = ({ attributes, clientId }) => {
          
 
         ${frameSl} {
-          padding: ${getBoxValue(padding)};
+          padding: ${getBoxValue(padding)}; 
           ${getBorderCSS(border)}
           height: ${height}; 
           width: 100%;

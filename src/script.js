@@ -12,8 +12,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         createRoot(mapEl).render(
             <>
-                <Style attributes={attributes} clientId={cId} />
-                <Map attributes={attributes} clientId={cId} />
+                <div id={`block-${cId}`} >
+                    <Style attributes={attributes} clientId={cId} />
+                    <Map attributes={attributes} clientId={cId} />
+                </div>
             </>
         );
 

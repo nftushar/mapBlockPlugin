@@ -20,6 +20,8 @@ const Settings = ({ attributes, setAttributes }) => {
 	const { rotateX, rotateY, rotateZ, rotateDuration, rotateDelay } = rotate;
 	const { scaleX, scaleY } = scale;
 
+	// console.log(scaleY);
+
 	const updateObj = (attr, key, val, nestKey = false) => {
 		const newObj = produce(attributes[attr], draft => {
 			if (false !== nestKey) {
@@ -59,7 +61,7 @@ const Settings = ({ attributes, setAttributes }) => {
 				{(tab) => <>
 					{tab.name === "general" && <PanelBody
 						className="bPlPanelBody"
-						title={__("Map", "map-block")} 	> 
+						title={__("Map", "map-block")} 	>
 						<TextControl
 							label={__("Location", "map-block")}
 							value={location}
@@ -87,13 +89,6 @@ const Settings = ({ attributes, setAttributes }) => {
 								value={width}
 								onChange={(val) => setAttributes({ width: val })}
 							/>
-							<BtnGroup
-								className="mt20"
-								label={__("Alignment", "map-block")}
-								value={alignment}
-								onChange={val => setAttributes({ alignment: val })}
-								options={mapAlignments} isIcon={true} />
-
 							<UnitControl
 								className='mt20'
 								label={__("Height", "map-block")}
@@ -101,6 +96,13 @@ const Settings = ({ attributes, setAttributes }) => {
 								value={height}
 								onChange={(val) => setAttributes({ height: val })}
 							/>
+
+							<BtnGroup
+								className="mt20"
+								label={__("Alignment", "map-block")}
+								value={alignment}
+								onChange={val => setAttributes({ alignment: val })}
+								options={mapAlignments} isIcon={true} />
 
 							<Background
 								className='mt20 mb20'
@@ -136,7 +138,7 @@ const Settings = ({ attributes, setAttributes }) => {
 								]} >
 
 								{(tab) => <>
-									{tab.name === "normal" && <PanelBody className="bPlPanelBody" >
+									{tab.name === "normal" && <PanelBody className="bPlPanelBody" > 
 										<RangeControl
 											label={__("Blur", "map-block")}
 											value={filters.blur}
@@ -144,15 +146,18 @@ const Settings = ({ attributes, setAttributes }) => {
 											min={0}
 											max={10}
 											step={0.1}
+											allowReset={true}
+											resetFallbackValue={0}
 										/>
 										<RangeControl
 											label={__("Brightness", "map-block")}
 											value={filters.brightness}
 											onChange={(val) => updateObj('filters', 'brightness', val)}
-
 											min={0}
 											max={200}
 											step={1}
+											allowReset={true}
+											resetFallbackValue={100}
 										/>
 										<RangeControl
 											label={__("Contrast", "map-block")}
@@ -161,6 +166,8 @@ const Settings = ({ attributes, setAttributes }) => {
 											min={0}
 											max={200}
 											step={1}
+											allowReset={true}
+											resetFallbackValue={100}
 										/>
 										<RangeControl
 											label={__("Saturate", "map-block")}
@@ -169,6 +176,8 @@ const Settings = ({ attributes, setAttributes }) => {
 											min={0}
 											max={200}
 											step={1}
+											allowReset={true}
+											resetFallbackValue={100}
 										/>
 										<RangeControl
 											label={__("Hue", "map-block")}
@@ -177,20 +186,25 @@ const Settings = ({ attributes, setAttributes }) => {
 											min={0}
 											max={360}
 											step={1}
+											allowReset={true}
+											resetFallbackValue={1}
 										/>
 									</PanelBody>}
 
 
-									{tab.name === "hover" && <PanelBody className="bPlPanelBody">
+									{tab.name === "hover" && <PanelBody className="bPlPanelBody"> 
+
 										<RangeControl
 											label={__("Blur", "map-block")}
 											value={hovFilters.blur}
 											onChange={(val) => updateObj('hovFilters', 'blur', val)}
-
 											min={0}
 											max={10}
 											step={0.1}
+											allowReset={true}
+											resetFallbackValue={0}
 										/>
+
 										<RangeControl
 											label={__("Brightness", "map-block")}
 											value={hovFilters.brightness}
@@ -198,6 +212,8 @@ const Settings = ({ attributes, setAttributes }) => {
 											min={0}
 											max={200}
 											step={1}
+											allowReset={true}
+											resetFallbackValue={60}
 										/>
 										<RangeControl
 											label={__("Contrast", "map-block")}
@@ -206,6 +222,8 @@ const Settings = ({ attributes, setAttributes }) => {
 											min={0}
 											max={200}
 											step={1}
+											allowReset={true}
+											resetFallbackValue={150}
 										/>
 										<RangeControl
 											label={__("Saturate", "map-block")}
@@ -214,6 +232,8 @@ const Settings = ({ attributes, setAttributes }) => {
 											min={0}
 											max={200}
 											step={1}
+											allowReset={true}
+											resetFallbackValue={200}
 										/>
 										<RangeControl
 											label={__("Hue", "map-block")}
@@ -222,6 +242,8 @@ const Settings = ({ attributes, setAttributes }) => {
 											min={0}
 											max={360}
 											step={1}
+											allowReset={true}
+											resetFallbackValue={10}
 										/>
 									</PanelBody>}
 								</>}
@@ -241,40 +263,49 @@ const Settings = ({ attributes, setAttributes }) => {
 								<PanelBody
 									initialOpen={false}
 									className="bPlPanelBody mt20"
-									title={__("Translate", "map-block")}
-								>
+									title={__("Translate", "map-block")}>
+
 									<RangeControl
 										label={__("translate-X", "map-block")}
 										value={translateX}
-										onChange={(val) => updateObj('floating', 'rotate', val, 'rotateX')}
+										onChange={(val) => updateObj('floating', 'translate', val, 'translateX')}
+										// onChange={(val) => setAttributes({ floating: { ...floating, translate: { ...floating.translate, translateY: val } } })}
 										min={0}
 										max={100}
 										step={1}
+										allowReset={true}
+										resetFallbackValue={15.8239}
 									/>
+
 									<RangeControl
 										label={__("translate-Y", "map-block")}
 										value={translateY}
-										onChange={(val) => updateObj('floating', 'rotate', val, 'rotateY')}
+										onChange={(val) => updateObj('floating', 'translate', val, 'translateY')}
 										min={0}
 										max={100}
 										step={1}
+										allowReset={true}
+										resetFallbackValue={1.08383}
 									/>
 									<RangeControl
 										label={__("duration", "map-block")}
 										value={duration}
-										onChange={(val) => updateObj('floating', 'rotate', val, 'rotateZ')}
+										onChange={(val) => updateObj('floating', 'translate', val, 'duration')}
 										min={0}
 										max={100}
 										step={1}
+										allowReset={true}
+										resetFallbackValue={1000}
 									/>
 									<RangeControl
 										label={__("delay", "map-block")}
 										value={delay}
-										onChange={(val) => updateObj('floating', 'rotate', val, 'rotateDelay')}
-
+										onChange={(val) => updateObj('floating', 'translate', val, 'delay')}
 										min={0}
 										max={10}
 										step={1}
+										allowReset={true}
+										resetFallbackValue={0}
 									/>
 								</PanelBody>
 
@@ -290,6 +321,8 @@ const Settings = ({ attributes, setAttributes }) => {
 										min={0}
 										max={180}
 										step={1}
+										allowReset={true}
+										resetFallbackValue={-21.5199}
 									/>
 									<RangeControl
 										label={__("Rotate-Y", "map-block")}
@@ -298,6 +331,8 @@ const Settings = ({ attributes, setAttributes }) => {
 										min={0}
 										max={180}
 										step={1}
+										allowReset={true}
+										resetFallbackValue={9.75444}
 									/>
 									<RangeControl
 										label={__("Rotate-Z", "map-block")}
@@ -306,6 +341,8 @@ const Settings = ({ attributes, setAttributes }) => {
 										min={0}
 										max={180}
 										step={1}
+										allowReset={true}
+										resetFallbackValue={-36.4564}
 									/>
 									<RangeControl
 										label={__("duration", "map-block")}
@@ -314,15 +351,18 @@ const Settings = ({ attributes, setAttributes }) => {
 										min={0}
 										max={10000}
 										step={1}
+										allowReset={true}
+										resetFallbackValue={1000}
 									/>
 									<RangeControl
 										label={__("delay", "map-block")}
 										value={rotateDelay}
 										onChange={(val) => updateObj('floating', 'rotate', val, 'rotateDelay')}
-
 										min={0}
 										max={5000}
 										step={1}
+										allowReset={true}
+										resetFallbackValue={0}
 									/>
 								</PanelBody>
 
@@ -334,18 +374,22 @@ const Settings = ({ attributes, setAttributes }) => {
 									<RangeControl
 										label={__("scale-X", "map-block")}
 										value={scaleX}
-										onChange={(val) => updateObj('floating', 'rotate', val, 'scaleX')}
+										onChange={(val) => updateObj('floating', 'scale', val, 'scaleX')}
 										min={0}
 										max={5}
-										step={0.1}
+										step={1}
+										allowReset={true}
+										resetFallbackValue={0.803472}
 									/>
 									<RangeControl
 										label={__("scale-Y", "map-block")}
 										value={scaleY}
-										onChange={(val) => updateObj('floating', 'rotate', val, 'scaleY')}
+										onChange={(val) => updateObj('floating', 'scale', val, 'scaleY')}
 										min={0}
 										max={5}
 										step={1}
+										allowReset={true}
+										resetFallbackValue={1.04335}
 									/>
 								</PanelBody>
 							</>}

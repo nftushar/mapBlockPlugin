@@ -83,7 +83,7 @@
     "floating": {
       "type": "object",
       "default": {
-        "enabled": true,
+        "enabled": false,
         "translate": {
           "translateX": 15.8239,
           "translateY": 1.08383,

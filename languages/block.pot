@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-11-25T06:46:11+00:00\n"
+"POT-Creation-Date: 2023-11-29T08:58:20+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: map-block\n"
@@ -31,169 +31,170 @@ msgid "http://bplugins.com"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:3345
-msgid "Solid"
-msgstr ""
-
-#: dist/editor.js:1
-#: dist/editor.js:3346
-msgid "Outline"
-msgstr ""
-
-#: dist/editor.js:1
-#: dist/editor.js:3349
+#: dist/editor.js:4536
 msgid "left"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:3350
+#: dist/editor.js:4537
 msgid "center"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:3351
+#: dist/editor.js:4538
 msgid "right"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:3377
-msgid "Settings"
+#: dist/editor.js:4589
+#: dist/editor.js:4610
+msgid "Map"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:3381
-msgid "Height"
-msgstr ""
-
-#: dist/editor.js:1
-#: dist/editor.js:3390
+#: dist/editor.js:4591
 msgid "Location"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:3396
+#: dist/editor.js:4597
 msgid "Zoom"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:3410
-msgid "Style"
+#: dist/editor.js:4612
+msgid "Width"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:3414
+#: dist/editor.js:4619
+msgid "Height"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:4627
+msgid "Alignment"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:4634
 msgid "Background"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:3419
+#: dist/editor.js:4641
+msgid "Padding"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:4652
 msgid "Border:"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:3437
-#: dist/editor.js:3483
+#: dist/editor.js:4658
+msgid "Filter"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:4668
+#: dist/editor.js:4723
 msgid "Blur"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:3445
-#: dist/editor.js:3491
+#: dist/editor.js:4678
+#: dist/editor.js:4734
 msgid "Brightness"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:3453
-#: dist/editor.js:3499
+#: dist/editor.js:4688
+#: dist/editor.js:4744
 msgid "Contrast"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:3461
-#: dist/editor.js:3507
+#: dist/editor.js:4698
+#: dist/editor.js:4754
 msgid "Saturate"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:3469
-#: dist/editor.js:3515
+#: dist/editor.js:4708
+#: dist/editor.js:4764
 msgid "Hue"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:3534
-msgid "Advance"
-msgstr ""
-
-#: dist/editor.js:1
-#: dist/editor.js:3551
+#: dist/editor.js:4779
 msgid "Floating"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:3554
+#: dist/editor.js:4781
 msgid "Enable"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:3566
+#: dist/editor.js:4791
 msgid "Translate"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:3569
+#: dist/editor.js:4794
 msgid "translate-X"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:3577
+#: dist/editor.js:4806
 msgid "translate-Y"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:3585
-#: dist/editor.js:3630
+#: dist/editor.js:4816
+#: dist/editor.js:4873
 msgid "duration"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:3593
-#: dist/editor.js:3638
+#: dist/editor.js:4826
+#: dist/editor.js:4883
 msgid "delay"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:3603
+#: dist/editor.js:4840
 msgid "Rotate"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:3606
+#: dist/editor.js:4843
 msgid "Rotate-X"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:3614
+#: dist/editor.js:4853
 msgid "Rotate-Y"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:3622
+#: dist/editor.js:4863
 msgid "Rotate-Z"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:3649
+#: dist/editor.js:4897
 msgid "Scale"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:3652
+#: dist/editor.js:4900
 msgid "scale-X"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:3660
+#: dist/editor.js:4910
 msgid "scale-Y"
 msgstr ""
 
