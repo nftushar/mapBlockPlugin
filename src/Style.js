@@ -26,15 +26,9 @@ const Style = ({ attributes, clientId }) => {
           100% {
             transform: translateX(${translateX}px) translateY(${translateY}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotateZ(${rotateZ}deg) scaleX(${scaleX}) scaleY(${scaleY});
           }
-        }   
-
-        #bBlocks-map-block-282a2077-6cc7-4cc5-a66d-1e85a8fb0c27 {
-          display: grid;
-          justify-content: center;
-      }
+        }    
      
-      ${mainSl}{
-        display: grid;
+      ${mainSl}{ 
         justify-content: ${alignment};
       }
 
@@ -46,11 +40,7 @@ const Style = ({ attributes, clientId }) => {
           ${containerSl}{ 
             width: ${width}; 
             ${getBackgroundCSS(background)}
-          }
-
-          #bBlocks-map-block-d9655bfb-ea6b-4a4c-b7bd-802d0f274d17 {
-            
-          }
+          } 
 
         ${customEmbedSl} { 
           filter: blur(${blur}px) brightness(${brightness}%) contrast(${contrast}%) saturate(${saturate}%) hue-rotate(${hue}deg);
@@ -67,6 +57,7 @@ const Style = ({ attributes, clientId }) => {
          
 
         ${frameSl} {
+          border: 0px;
           padding: ${getBoxValue(padding)}; 
           ${getBorderCSS(border)}
           height: ${height}; 
@@ -78,7 +69,8 @@ const Style = ({ attributes, clientId }) => {
         ${customEmbedSl}.custom-animation-class {
           animation-duration: ${rotateDuration}s;
           animation-delay: ${rotateDelay}s;
-        }`,
+        }
+        `,
     }}
     />
   );

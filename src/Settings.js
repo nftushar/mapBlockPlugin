@@ -31,23 +31,7 @@ const Settings = ({ attributes, setAttributes }) => {
 			}
 		});
 		setAttributes({ [attr]: newObj })
-	}
-
-	// const updateObj = (attr, key, val, nestKey = false) => {
-	// 	const newObj = produce(attributes[attr] || {}, (draft) => {
-	// 		if (false !== nestKey) {
-	// 			if (!draft[key]) {
-	// 				draft[key] = {};
-	// 			}
-	// 			draft[key][nestKey] = val;
-	// 		} else {
-	// 			draft[key] = val;
-	// 		}
-	// 	});
-
-	// 	setAttributes({ [attr]: newObj });
-	// };
-
+	} 
 
 	return (
 		<InspectorControls>
